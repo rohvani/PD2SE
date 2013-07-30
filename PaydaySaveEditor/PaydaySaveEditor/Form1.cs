@@ -48,7 +48,6 @@ namespace PaydaySaveEditor
 			{
 				try
 				{
-					MessageBox.Show(saveFileDialog.FileName);
 					transform(saveFileStream, true, saveFileDialog.FileName);
 				}
 				catch (Exception ex)
@@ -71,7 +70,7 @@ namespace PaydaySaveEditor
 				data[i] ^= xorKey[xorOffset];
 			}
 
-			if (save == true)
+			if (save)
 			{
 				byte[] md5 = MD5.Create().ComputeHash(saveFileStream);
 

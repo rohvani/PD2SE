@@ -33,9 +33,7 @@
 			this.btnLoadSave = new System.Windows.Forms.ToolStripButton();
 			this.btnSave = new System.Windows.Forms.ToolStripButton();
 			this.openSaveFileDialog = new System.Windows.Forms.OpenFileDialog();
-			this.label2 = new System.Windows.Forms.Label();
 			this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
-			this.textBox2 = new System.Windows.Forms.TextBox();
 			this.toolStrip1.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -74,30 +72,11 @@
 			// 
 			this.openSaveFileDialog.FileName = "openFileDialog1";
 			// 
-			// label2
-			// 
-			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(664, 169);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(60, 13);
-			this.label2.TabIndex = 4;
-			this.label2.Text = "Debug Info";
-			// 
-			// textBox2
-			// 
-			this.textBox2.Location = new System.Drawing.Point(491, 185);
-			this.textBox2.Multiline = true;
-			this.textBox2.Name = "textBox2";
-			this.textBox2.Size = new System.Drawing.Size(233, 93);
-			this.textBox2.TabIndex = 3;
-			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(736, 290);
-			this.Controls.Add(this.label2);
-			this.Controls.Add(this.textBox2);
 			this.Controls.Add(this.toolStrip1);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
 			this.MaximizeBox = false;
@@ -115,10 +94,8 @@
 		private System.Windows.Forms.ToolStrip toolStrip1;
 		private System.Windows.Forms.ToolStripButton btnLoadSave;
 		private System.Windows.Forms.OpenFileDialog openSaveFileDialog;
-		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.SaveFileDialog saveFileDialog;
 		private System.Windows.Forms.ToolStripButton btnSave;
-		private System.Windows.Forms.TextBox textBox2;
 	}
 }
 

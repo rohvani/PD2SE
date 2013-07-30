@@ -1,9 +1,0 @@
-C:\Users\Admin\Documents\GitHub\payday2saveeditor\PaydaySaveEditor\PaydaySaveEditor\bin\Debug\PaydaySaveEditor.exe
-C:\Users\Admin\Documents\GitHub\payday2saveeditor\PaydaySaveEditor\PaydaySaveEditor\bin\Debug\PaydaySaveEditor.pdb
-C:\Users\Admin\Documents\GitHub\payday2saveeditor\PaydaySaveEditor\PaydaySaveEditor\obj\x86\Debug\ResolveAssemblyReference.cache
-C:\Users\Admin\Documents\GitHub\payday2saveeditor\PaydaySaveEditor\PaydaySaveEditor\obj\x86\Debug\PaydaySaveEditor.Form1.resources
-C:\Users\Admin\Documents\GitHub\payday2saveeditor\PaydaySaveEditor\PaydaySaveEditor\obj\x86\Debug\PaydaySaveEditor.Properties.Resources.resources
-C:\Users\Admin\Documents\GitHub\payday2saveeditor\PaydaySaveEditor\PaydaySaveEditor\obj\x86\Debug\GenerateResource.read.1.tlog
-C:\Users\Admin\Documents\GitHub\payday2saveeditor\PaydaySaveEditor\PaydaySaveEditor\obj\x86\Debug\GenerateResource.write.1.tlog
-C:\Users\Admin\Documents\GitHub\payday2saveeditor\PaydaySaveEditor\PaydaySaveEditor\obj\x86\Debug\PaydaySaveEditor.exe
-C:\Users\Admin\Documents\GitHub\payday2saveeditor\PaydaySaveEditor\PaydaySaveEditor\obj\x86\Debug\PaydaySaveEditor.pdb

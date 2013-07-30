@@ -35,8 +35,13 @@ namespace PaydaySaveEditor
 							MemoryStream ms = new MemoryStream();
 							transformTest(fileStream, saveFileStream);
 
-							// saveFileStream.Position = 0;
-							// transformTest(saveFileStream, File.Create("temp_encrypted.dat"));
+							saveFileStream.Position = 0;
+
+							Stream file = File.Create("temp_decrypted.dat");
+							saveFileStream.WriteTo(file);
+							file.Close();
+
+							saveFileStream.Position = 0;
 						}
 					}
 				}
@@ -53,8 +58,22 @@ namespace PaydaySaveEditor
 			{
 				try
 				{
-					saveFileStream.Position = 0;
-					transformTest(saveFileStream, File.Create(saveFileDialog.FileName));
+					MemoryStream ms = new MemoryStream();
+					saveFileStream.WriteTo(ms);
+
+					ms.SetLength(ms.Length - 16);
+					ms.Position = 0;
+
+					byte[] md5 = MD5.Create().ComputeHash(ms);
+					ms.SetLength(ms.Length + 16);
+
+					ms.Seek(ms.Length - 16, SeekOrigin.Begin);
+					ms.Write(md5, 0, 16);
+
+					Stream file = File.Create(saveFileDialog.FileName);
+					ms.Position = 0;
+					transformTest(ms, file);
+					file.Close();
 				}
 				catch (Exception ex)
 				{
@@ -62,38 +81,7 @@ namespace PaydaySaveEditor
 				}
 			}
 		}
-
-		public void transform(FileStream file, bool save, String filePath)
-		{
-			byte[] data = new byte[file.Length];
-			file.Read(data, 0, data.Length);
-
-			int xorOffset;
-
-			for (int i = 0; i < data.Length; i++)
-			{
-				xorOffset = (i % xorKey.Length);
-				data[i] ^= xorKey[xorOffset];
-			}
-
-			if (save)
-			{
-				byte[] md5 = MD5.Create().ComputeHash(saveFileStream);
-
-				FileStream newFile = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.Write);
-
-				newFile.Write(data, 0, (data.Length - 16));
-				newFile.Write(md5, 0, md5.Length);
-
-				newFile.Close();
-			}
-			else
-			{
-				//saveFileStream = new FileStream(Application.StartupPath + "/temp.dat", FileMode.OpenOrCreate, FileAccess.ReadWrite);
-				//saveFileStream.Write(data, 0, data.Length);
-			}
-		}
-	
+		
 		public void transformTest(Stream input, Stream output)
 		{
 			byte[] data = new byte[input.Length];
@@ -108,6 +96,16 @@ namespace PaydaySaveEditor
 			}
 
 			output.Write(data, 0, data.Length);
+		}
+
+		private void button1_Click(object sender, EventArgs e)
+		{
+			using (FileStream fileStream = File.OpenRead("temp_decrypted.dat"))
+			{
+				MemoryStream ms = new MemoryStream();
+				fileStream.CopyTo(saveFileStream);
+				saveFileStream.Position = 0;
+			}
 		}
 	}
 }

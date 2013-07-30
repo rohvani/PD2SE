@@ -1,0 +1,9 @@
+c:\users\admin\documents\visual studio 2010\Projects\PaydaySaveEditor\PaydaySaveEditor\bin\Debug\PaydaySaveEditor.exe
+c:\users\admin\documents\visual studio 2010\Projects\PaydaySaveEditor\PaydaySaveEditor\bin\Debug\PaydaySaveEditor.pdb
+c:\users\admin\documents\visual studio 2010\Projects\PaydaySaveEditor\PaydaySaveEditor\obj\x86\Debug\ResolveAssemblyReference.cache
+c:\users\admin\documents\visual studio 2010\Projects\PaydaySaveEditor\PaydaySaveEditor\obj\x86\Debug\PaydaySaveEditor.Form1.resources
+c:\users\admin\documents\visual studio 2010\Projects\PaydaySaveEditor\PaydaySaveEditor\obj\x86\Debug\PaydaySaveEditor.Properties.Resources.resources
+c:\users\admin\documents\visual studio 2010\Projects\PaydaySaveEditor\PaydaySaveEditor\obj\x86\Debug\GenerateResource.read.1.tlog
+c:\users\admin\documents\visual studio 2010\Projects\PaydaySaveEditor\PaydaySaveEditor\obj\x86\Debug\GenerateResource.write.1.tlog
+c:\users\admin\documents\visual studio 2010\Projects\PaydaySaveEditor\PaydaySaveEditor\obj\x86\Debug\PaydaySaveEditor.exe
+c:\users\admin\documents\visual studio 2010\Projects\PaydaySaveEditor\PaydaySaveEditor\obj\x86\Debug\PaydaySaveEditor.pdb

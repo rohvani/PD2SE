@@ -37,8 +37,16 @@ namespace PD2.GameSave
 	{
 		private const int SAVE_VERSION = 10; // BETA = 9, RETAIL = 10
 
+		private String filePath;
+
+		private DataBlock header;
+		private DataBlock gamedata;
+		private DataBlock footer;
+
 		public SaveFile(String filePath)
 		{
+			this.filePath = filePath;
+
 			byte[] file = File.ReadAllBytes(filePath);
 			byte[] data = GameSave.Encryption.TransformData(file);
 			
@@ -51,17 +59,25 @@ namespace PD2.GameSave
 				throw new Exception(String.Format("Unsupported save version: {0}", version.ToString("X4")));
 
 			// @TODO: process blocks
-			DataBlock header = new DataBlock(br);
-			DataBlock gamedata = new GameDataBlock(br);
-			DataBlock footer = new DataBlock(br);
+			this.header = new DataBlock(br);
+			this.gamedata = new GameDataBlock(br);
+			this.footer = new DataBlock(br);
 
 			// We're done with our reader
 			br.Close();
+		}
 
-			// Test rebuild
+		public void Save()
+		{
+			this.Save(filePath);
+		}
+
+		public void Save(String filePath, bool encrypt = true)
+		{
 			MemoryStream ms = new MemoryStream();
 			BinaryWriter bw = new BinaryWriter(ms);
 
+			// Rebuild save
 			bw.Write(SAVE_VERSION);
 			bw.Write(header.ToArray());
 			bw.Write(gamedata.ToArray());
@@ -69,10 +85,14 @@ namespace PD2.GameSave
 			bw.Write(new byte[16]);
 			bw.Write(Encryption.GenerateSaveHash(ms.ToArray()));
 
-			File.WriteAllBytes("recon.bin", ms.ToArray());
-
+			// Store save and close streams
+			byte[] data = ms.ToArray();
 			bw.Close();
 			ms.Close();
+
+			// Encrypt if requested
+			if (encrypt) Encryption.TransformData(data);
+			File.WriteAllBytes(filePath, data);
 		}
 	}
 }

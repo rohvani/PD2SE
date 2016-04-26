@@ -26,6 +26,7 @@ namespace PD2.GameSave
 		private const int BLOCK_CHECKSUM_LENGTH = 16;
 
 		private byte[] data;
+
 		public int Size
 		{
 			get { return BLOCK_VERSION_LENGTH + data.Length + BLOCK_CHECKSUM_LENGTH; }

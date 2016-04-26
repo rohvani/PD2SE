@@ -16,6 +16,10 @@ namespace PD2
 		static void Main(String[] args)
 		{
 			SaveFile save = new SaveFile(args[0]);
+
+			// for debugging, we don't want to encrypt save
+			save.Save("dec.bin", false);
+
 			Console.Read();
 		}
 	}

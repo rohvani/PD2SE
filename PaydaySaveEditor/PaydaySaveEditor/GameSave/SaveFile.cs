@@ -58,7 +58,7 @@ namespace PD2.GameSave
 			if (version != SAVE_VERSION)
 				throw new Exception(String.Format("Unsupported save version: {0}", version.ToString("X4")));
 
-			// @TODO: process blocks
+			// Process blocks
 			this.header = new DataBlock(br);
 			this.gamedata = new GameDataBlock(br);
 			this.footer = new DataBlock(br);

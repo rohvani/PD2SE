@@ -10,15 +10,15 @@ namespace PD2.GameSave
 	public class GameDataBlock : DataBlock
 	{
 		private enum StructureType : byte
-        {
-            String = 0x01,
-            Float = 0x02,
-            Unknown = 0x03,
-            Byte = 0x04,
-            Short = 0x05,
-            Bool = 0x06,
-            Dictionary = 0x07
-        }
+		{
+			String = 0x01,
+			Float = 0x02,
+			Unknown = 0x03,
+			Byte = 0x04,
+			Short = 0x05,
+			Bool = 0x06,
+			Dictionary = 0x07
+		}
 
 		public Dictionary<Object, Object> Dictionary { get; set; }
 

@@ -26,6 +26,10 @@ namespace PD2.GameSave
 		private const int BLOCK_CHECKSUM_LENGTH = 16;
 
 		private byte[] data;
+		public int Size
+		{
+			get { return BLOCK_VERSION_LENGTH + data.Length + BLOCK_CHECKSUM_LENGTH; }
+		}
 
 		public DataBlock(BinaryReader br)
 		{
@@ -44,17 +48,12 @@ namespace PD2.GameSave
 			br.ReadBytes(BLOCK_CHECKSUM_LENGTH);
 		}
 
-		public int size()
-		{
-			return data.Length + BLOCK_CHECKSUM_LENGTH + BLOCK_SIZE_LENGTH + BLOCK_VERSION_LENGTH;
-		}
-
 		public byte[] ToArray()
 		{
 			MemoryStream ms = new MemoryStream();
 			BinaryWriter bw = new BinaryWriter(ms);
 
-			bw.Write(data.Length + BLOCK_CHECKSUM_LENGTH + BLOCK_VERSION_LENGTH);
+			bw.Write(Size);
 			bw.Write(BLOCK_VERSION);
 			bw.Write(data);
 			bw.Write(MD5.Create().ComputeHash(data));

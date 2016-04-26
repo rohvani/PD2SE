@@ -36,9 +36,7 @@ namespace PD2.GameSave
 			for (int i = 0; i < data.Length; i++)
 			{
 				bool condition = (byte)((data[i] + HASH_KEY[i % 4]) % 2) != 0;
-
-				if (condition)
-					data[i] = (byte)(i % 7);
+				if (condition) data[i] = (byte)(i % 7);
 			}
 
 			return MD5.Create().ComputeHash(data);

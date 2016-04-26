@@ -42,7 +42,7 @@ namespace PD2.GameSave
 			byte[] file = File.ReadAllBytes(filePath);
 			byte[] data = GameSave.Encryption.TransformData(file);
 			
-			// Process save
+			// Open save to process
 			BinaryReader br = new BinaryReader(new MemoryStream(data));
 			
 			// Validate that file is a supported save format
@@ -52,7 +52,7 @@ namespace PD2.GameSave
 
 			// @TODO: process blocks
 			DataBlock header = new DataBlock(br);
-			DataBlock gamedata = new DataBlock(br);
+			DataBlock gamedata = new GameDataBlock(br);
 			DataBlock footer = new DataBlock(br);
 
 			// We're done with our reader

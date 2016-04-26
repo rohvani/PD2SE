@@ -19,13 +19,13 @@ namespace PD2.GameSave
 
 	public class DataBlock
 	{
-		private const int BLOCK_VERSION = 10; // BETA = 9, RETAIL = 10
+		protected const int BLOCK_VERSION = 10; // BETA = 9, RETAIL = 10
 
-		private const int BLOCK_SIZE_LENGTH = 4;
-		private const int BLOCK_VERSION_LENGTH = 4;
-		private const int BLOCK_CHECKSUM_LENGTH = 16;
+		protected const int BLOCK_SIZE_LENGTH = 4;
+		protected const int BLOCK_VERSION_LENGTH = 4;
+		protected const int BLOCK_CHECKSUM_LENGTH = 16;
 
-		private byte[] data;
+		protected byte[] data;
 
 		public int Size
 		{

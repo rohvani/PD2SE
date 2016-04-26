@@ -40,8 +40,14 @@ namespace PD2.GameSave
 		private String filePath;
 
 		private DataBlock header;
-		private DataBlock gamedata;
+		private GameDataBlock gamedata;
 		private DataBlock footer;
+
+		public Dictionary<Object, Object> GameData
+		{
+			get { return gamedata.Dictionary; }
+			set { gamedata.Dictionary = value; }
+		}
 
 		public SaveFile(String filePath)
 		{

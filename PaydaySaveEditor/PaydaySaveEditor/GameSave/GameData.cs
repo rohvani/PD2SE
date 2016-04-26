@@ -70,14 +70,20 @@ namespace PD2.GameSave
 			return dictionary;
 		}
 
-		private static String ReadCString(BinaryReader br)
+		private static Object ReadCString(BinaryReader br)
 		{
-			StringBuilder sb = new StringBuilder();
+			List<byte> bytes = new List<byte>();
 
+			// Read our string bytes into list
 			byte c;
-			while((c = br.ReadByte()) != 0x00) sb.Append((char) c);
+			while ((c = br.ReadByte()) != 0x00) bytes.Add(c);
 
-			return sb.ToString();
+			// String might be encoded so we must check for this
+			byte[] data = bytes.ToArray();
+			UnencodedString es = Encryption.UnencodeString(data);
+
+			// Return result
+			return (es != null) ? es : (Object) ASCIIEncoding.ASCII.GetString(data);
 		}
 	}
 }

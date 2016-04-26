@@ -8,6 +8,7 @@ namespace PD2.GameSave
 {
 	public static class Encryption
 	{
+		#region Data Encryption/Hashing
 		private static byte[] XOR_KEY = 
 		{
 			0x74, 0x3E, 0x3F, 0xA4, 0x32, 0x43, 0x26, 0x2E, 0x23, 0x36, 
@@ -41,5 +42,47 @@ namespace PD2.GameSave
 
 			return MD5.Create().ComputeHash(data);
 		}
+		#endregion
+
+		#region String Encoding
+		private static byte[] PADDING_PATTERN =
+		{
+			0xDF, 0xC1, 0xA3, 0x85, 0x67, 0x49, 0x2B, 0x0D, 0xED, 0xCF, 
+			0xB1, 0x93 
+		};
+
+		public static UnencodedString UnencodeString(byte[] data)
+		{
+			// Check if string is encoded
+			for (int i = 1; i < data.Length; i +=2)
+			{
+				if (data[i] != PADDING_PATTERN[(i - 1) / 2])
+					return null;
+			}
+
+			// Since string is encoded, we return unencoded string
+			byte[] unencoded = new byte[data.Length / 2];
+
+			for (int i = 0; i < unencoded.Length; i++)
+			{
+				unencoded[i] = (byte) (0xFE - data[i * 2]);
+			}
+
+			return new UnencodedString(ASCIIEncoding.ASCII.GetString(unencoded));
+		}
+
+		public static byte[] EncodeString(String s)
+		{
+			byte[] sData = ASCIIEncoding.ASCII.GetBytes(s);
+			byte[] data = new byte[sData.Length * 2];
+
+			for (int i = 0; i < data.Length; i++)
+			{
+				data[i] = (i % 2 == 0) ? (byte) (0xFE - sData[i / 2]) : PADDING_PATTERN[(i - 1) / 2];
+			}
+
+			return data;
+		}
+		#endregion
 	}
 }

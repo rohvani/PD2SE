@@ -49,12 +49,12 @@ namespace PD2.GameSave
 			set { gamedata.Dictionary = value; }
 		}
 
-		public SaveFile(String filePath)
+		public SaveFile(String filePath, bool encrypted = true)
 		{
 			this.filePath = filePath;
 
 			byte[] file = File.ReadAllBytes(filePath);
-			byte[] data = GameSave.Encryption.TransformData(file);
+			byte[] data = encrypted ? Encryption.TransformData(file) : file;
 			
 			// Open save to process
 			BinaryReader br = new BinaryReader(new MemoryStream(data));
@@ -97,7 +97,7 @@ namespace PD2.GameSave
 			ms.Close();
 
 			// Encrypt if requested
-			if (encrypt) Encryption.TransformData(data);
+			if (encrypt) data = Encryption.TransformData(data);
 			File.WriteAllBytes(filePath, data);
 		}
 	}

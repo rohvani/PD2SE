@@ -7,20 +7,18 @@ using System.Text;
 namespace PD2.GameSave
 {
 	/*
-
 	struct Block
 	{
-		int MAGIC
-		int SIZE
+		int				VERSION
+		int				SIZE
 		byte[size - 16] data
-		byte[16] md5(data)
+		byte[16]		MD5(data)
 	}
-
 	*/
 
 	public class DataBlock
 	{
-		private const int BLOCK_HEADER_MAGIC = 0x0A;
+		private const int BLOCK_VERSION = 10; // BETA = 9, RETAIL = 10
 		private const int BLOCK_CHECKSUM_LENGTH = 16;
 
 		private byte[] data;
@@ -31,7 +29,7 @@ namespace PD2.GameSave
 			int header = br.ReadInt32();
 
 			// Validate header
-			if (header != BLOCK_HEADER_MAGIC)
+			if (header != BLOCK_VERSION)
 				throw new Exception("Invalid block header detected, invalid block header.");
 
 			// Read data

@@ -4,26 +4,20 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-
 /*
 
-GameSave Format is as follows:
+Game save format is a series of blocks, 
+where Block has following structure:
 
-	Block: Save
-	{
-		Block: GameData
-		Block: Checksum
-	}
+struct Block
+{
+	int				VERSION
+	int				SIZE
+	byte[size - 16] data
+	byte[16]		MD5(data)
+}
 
-where Block =
-
-	struct Block
-	{
-		int MAGIC
-		int SIZE
-		byte[size - 16] data
-		byte[16] md5(data)
-	}
+Each block's data seems to be a serialized map
 
 */
 

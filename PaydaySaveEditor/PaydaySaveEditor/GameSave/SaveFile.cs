@@ -25,8 +25,6 @@ namespace PD2.GameSave
 {
 	public class SaveFile
 	{
-		private const int HEADER_MAGIC = 0x0A;
-
 		public SaveFile(String filePath)
 		{
 			byte[] file = File.ReadAllBytes(filePath);

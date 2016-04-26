@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace PD2.GameSave
@@ -15,17 +16,32 @@ namespace PD2.GameSave
 			0x3C, 0x6E, 0x66, 0xF6
 		};
 
+		private static byte[] HASH_KEY = { 0x1A, 0x1F, 0x32, 0x2C };
+
 		public static byte[] TransformData(byte[] data)
 		{
 			byte[] ret = (byte[]) data.Clone();
 
-			for (int i = 0; i < data.Length; ++i)
+			for (int i = 0; i < data.Length; i++)
 			{
 				int keyIdx = ((data.Length + i) * 7) % XOR_KEY.Length;
 				ret[i] ^= (byte)(XOR_KEY[keyIdx] * (data.Length - i));
 			}
 
 			return ret;
+		}
+
+		public static byte[] GenerateSaveHash(byte[] data)
+		{
+			for (int i = 0; i < data.Length; i++)
+			{
+				bool condition = (byte)((data[i] + HASH_KEY[i % 4]) % 2) != 0;
+
+				if (condition)
+					data[i] = (byte)(i % 7);
+			}
+
+			return MD5.Create().ComputeHash(data);
 		}
 	}
 }

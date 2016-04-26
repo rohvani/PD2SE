@@ -16,6 +16,7 @@ namespace PD2
 		static void Main(String[] args)
 		{
 			SaveFile save = new SaveFile(args[0]);
+			Console.Read();
 		}
 	}
 }

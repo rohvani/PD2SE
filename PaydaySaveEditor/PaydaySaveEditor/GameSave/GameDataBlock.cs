@@ -24,7 +24,7 @@ namespace PD2.GameSave
 
 		new public byte[] ToArray()
 		{
-			//this.data = GameData.SerializeData(Dictionary);
+			this.data = GameData.SerializeData(Dictionary);
 			return base.ToArray();
 		}
 	}

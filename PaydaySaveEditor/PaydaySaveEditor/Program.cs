@@ -15,12 +15,9 @@ namespace PD2
 		[STAThread]
 		static void Main(String[] args)
 		{
-			SaveFile file = new SaveFile(args[0]);
-			file.Save("enc.bin");
-
-			/*Application.EnableVisualStyles();
+			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new Editor());*/
+			Application.Run(new Editor());
 		}
 	}
 }

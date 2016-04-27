@@ -90,7 +90,7 @@ namespace PD2.GameSave
 					return br.ReadSingle();
 
 				case DataType.Empty:
-					return new Object();
+					return null;
 
 				case DataType.Byte:
 					return br.ReadByte();

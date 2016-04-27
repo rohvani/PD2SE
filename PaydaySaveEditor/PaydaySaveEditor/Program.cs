@@ -17,7 +17,7 @@ namespace PD2
 			[Option('e', "encryptFile", DefaultValue = false, HelpText = "Encrypt save file. Enable this if you are encrypting an already unencrypted file.")]
 			public bool EncryptOutput { get; set; }
 
-			[Option('o', "outputPath", DefaultValue = "output.bin", HelpText = "Path to save the processed game save to.")]
+			[Option('o', "outputPath", DefaultValue = "output.sav", HelpText = "Path to save the processed game save to.")]
 			public String OutputPath { get; set; }
 
 			[Option('i', "inputPath", Required = true, HelpText = "Path to the PAYDAY 2 game save that you'd like to process.")]

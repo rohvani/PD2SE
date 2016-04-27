@@ -40,7 +40,9 @@ namespace PD2.GameSave
 
 			// Validate header
 			if (version != BLOCK_VERSION)
+			{
 				throw new Exception(String.Format("Unsupported block version: {0}", version.ToString("X4")));
+			}
 
 			// Read data
 			data = br.ReadBytes(blockSize - BLOCK_CHECKSUM_LENGTH - BLOCK_SIZE_LENGTH);

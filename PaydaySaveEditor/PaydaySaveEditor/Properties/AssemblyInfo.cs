@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("PaydaySaveEditor")]
+[assembly: AssemblyTitle("PAYDAY 2 Save Editor")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("PaydaySaveEditor")]
-[assembly: AssemblyCopyright("Copyright ©  2013")]
+[assembly: AssemblyProduct("PAYDAY 2 Save Editor")]
+[assembly: AssemblyCopyright("https://github.com/seefo/PD2SaveEditor/")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

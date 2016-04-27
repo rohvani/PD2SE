@@ -62,7 +62,9 @@ namespace PD2.GameSave
 			// Validate that file is a supported save format
 			int version = br.ReadInt32();
 			if (version != SAVE_VERSION)
+			{
 				throw new Exception(String.Format("Unsupported save version: {0}", version.ToString("X4")));
+			}
 
 			// Process blocks
 			this.header = new DataBlock(br);
@@ -73,10 +75,7 @@ namespace PD2.GameSave
 			br.Close();
 		}
 
-		public void Save()
-		{
-			this.Save(filePath);
-		}
+		public void Save() { this.Save(filePath); }
 
 		public void Save(String filePath, bool encrypt = true)
 		{

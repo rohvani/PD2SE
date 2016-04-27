@@ -1,14 +1,16 @@
-payday2saveeditor
-=================
+PAYDAY 2 Save Editor
+===================
+This is a save editor for the PAYDAY 2 video game, it currently only supports the retail version on PC.  All data types, encryption, hashing, and encoding have been reversed. This tool can rebuild the entire save file and it's data.  
 
-Save editor for PAYDAY 2.
+**Currently, only command-line support has been added for modifying a save file.  A UI will be developed sometime in the future to allow you to seamlessly modify your save file.**
 
+Usage:
 
-Tool is currently being worked and has almost no features.
-
-Featurelist:
-  - Decrypt save
-  - Encrypt save
-  - Edit decrypted save (have to do so manually, more info in program)
-
-*Note: If you are an Overkill employee or representative and wish for this to be taken down, please contact me at my email (robbie.uvanni@gmail.com)
+    // decrypt save file
+    PD2SE.exe -i save000.sav -o output.sav 
+    
+    // re-encrypt save file
+    PD2SE.exe -i output.sav -e true -o newsave.sav 
+    
+    // display help
+    PD2SE.exe --help 

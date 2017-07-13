@@ -6,6 +6,8 @@ You may download the latest version here: https://github.com/seefo/PD2SE/release
 
 **Currently, only command-line support has been added for processing a save file.  You will need to use existing tools to modify the save file, like a hex editor.  A UI will be developed sometime in the future to allow you to seamlessly modify your save file.**
 
+**A fork that includes a UI may be found here: https://github.com/isqrl/PayDay2SaveView (credit to [@isqrl](https://github.com/isqrl))**
+
 Usage:
 
     // decrypt save file
